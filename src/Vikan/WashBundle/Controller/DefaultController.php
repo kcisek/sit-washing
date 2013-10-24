@@ -14,6 +14,10 @@ class DefaultController extends Controller
         foreach ($laundryPlaces as $k => &$v) {
             $mieleService->setLaundryState($v);
         }
-        return $this->render('VikanWashBundle:Default:index.html.twig', ['laundryStates' => $laundryPlaces]);
+        $response = $this->render('VikanWashBundle:Default:index.html.twig', ['laundryStates' => $laundryPlaces]);
+        $response->setPublic();
+        $response->setSharedMaxAge(60);
+
+        return $response;
     }
 }
