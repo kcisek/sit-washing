@@ -14,6 +14,7 @@ class MieleService
     {
         $user = 'youruser';
         $pass = 'yourpassword';
+
         $client = new Client($url);
 
         try {
