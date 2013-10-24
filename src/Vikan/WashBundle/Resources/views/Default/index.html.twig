@@ -1,5 +1,8 @@
 {% extends '::base.html.twig' %}
 
+        {% block stylesheets %}
+            <link href="{{ asset('/bundles/vikanwash/css/style.css') }}" rel="stylesheet" />
+        {% endblock %}
 {% block body %}
     <h1> Washing machines at sit student villages in Trondheim </h1>
 
@@ -9,11 +12,13 @@
         <th>Available</th>
         <th>Busy</th>
     </tr>
-    {% for laundryState in laundryStates %}
+    {% for slug, laundryPlace in laundryStates %}
     <tr>
-        <td>{{ laundryState.name }}</td>
-        <td>{{ laundryState.available }}</td>
-        <td>{{ laundryState.busy }}</td>
+        <td><a href="{{ path('vikan_wash_laundryplace', {'slug': slug}) }}">
+            {{ laundryPlace.name }}
+          </a>
+        <td>{{ laundryPlace.available }}</td>
+        <td>{{ laundryPlace.busy }}</td>
     </tr>
     {% endfor %}
     </table>
