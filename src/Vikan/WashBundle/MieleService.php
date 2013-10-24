@@ -6,7 +6,7 @@ use Guzzle\Http\Exception\CurlException;
 
 class MieleService
 {
-    const NETWORK_ERROR = 'Utilgjengelig';
+    const NETWORK_ERROR = 'Insufficient data for meaningful answer';
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class MieleService
             preg_match_all('/bgColor=Red/', $body, $redMatches);
             $laundryPlace['busy'] = count($redMatches[0]);
             $laundryPlace['available'] = count($greenMatches[0]);
-        } catch (CurlException $e) {
+        } catch (\Exception $e) {
             $laundryPlace['available'] = self::NETWORK_ERROR;
             $laundryPlace['busy'] = self::NETWORK_ERROR;
             $laundryPlace['html'] = self::NETWORK_ERROR;
