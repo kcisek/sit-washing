@@ -1,0 +1,6 @@
+parameters:
+    vikan_wash.example.class: Vikan\WashBundle\MieleService
+
+services:
+    vikan_wash.miele_service:
+        class: %vikan_wash.example.class%
