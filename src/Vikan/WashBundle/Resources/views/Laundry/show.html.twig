@@ -1,0 +1,9 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}VikanWashBundle:Laundry:show{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Laundry:show page</h1>
+
+{{ laundryPlace.html|raw }}
+{% endblock %}
