@@ -1,0 +1,20 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <h1> Washing places </h1>
+
+    <table>
+    <tr>
+        <th>Location</th>
+        <th>Available</th>
+        <th>Busy</th>
+    </tr>
+    {% for laundryState in laundryStates %}
+    <tr>
+        <td>{{ laundryState.name }}</td>
+        <td>{{ laundryState.available }}</td>
+        <td>{{ laundryState.busy }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
