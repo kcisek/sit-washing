@@ -1,0 +1,4 @@
+vikan_wash:
+    resource: "@VikanWashBundle/Resources/config/routing.yml"
+    prefix:   /
+
