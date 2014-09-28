@@ -3,6 +3,7 @@
 namespace Vikan\WashBundle;
 use Guzzle\Http\Client;
 use Guzzle\Http\Exception\CurlException;
+use Symfony\Component\DomCrawler\Crawler;
 
 class MieleService
 {
@@ -24,7 +25,21 @@ class MieleService
                 'connect_timeout' => 1.5,
             ]);
             $response = $request->send();
-            $laundryPlace['html'] = $body = $response->getBody();
+
+            $body = $response->getBody();
+             libxml_use_internal_errors(true);
+            $crawler = new Crawler();
+            $crawler->addContent($body);
+
+            foreach ($crawler->filter('img') as $img) {
+                $resource = $img->getAttribute('src');
+                $img->setAttribute('src', 'http://129.241.126.11/' . trim($resource, '/'));
+            }
+            
+            $crawler->addHtmlContent('<h1>foobar</h1>');
+            //'<link href="http://129.241.126.11/pic/public_n.css" type="text/css">');
+            $laundryPlace['html'] = $crawler->html();
+             libxml_use_internal_errors(false);
 
             preg_match_all('/bgColor=Green/', $body, $greenMatches);
             preg_match_all('/bgColor=Red/', $body, $redMatches);
