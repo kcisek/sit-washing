@@ -22,6 +22,7 @@ class MieleService
             $client = new Client($laundryPlace['url']);
             $request = $client->get('/LaundryState', [], [
                 'auth' => [$user, $pass, 'Digest'],
+                'timeout' => 1.5,
                 'connect_timeout' => 1.5,
             ]);
             $response = $request->send();
