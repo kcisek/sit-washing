@@ -92,6 +92,10 @@ class MieleService
                 'url' => "http://129.241.152.11/",
                 'name' => "Teknobyen"
             ],
+	    'voll' => [
+                'url' => "http://109.108.207.252/",
+                'name' => "Voll"
+            ],
             'lerkendal' => [
                 'url' => "http://129.241.161.227",
                 'name' => "Lerkendal"
