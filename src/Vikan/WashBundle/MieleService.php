@@ -94,7 +94,7 @@ class MieleService
             ],
 	    'voll' => [
                 'url' => "http://109.108.207.252/",
-                'name' => "Voll"
+                'name' => "Voll Studentby"
             ],
             'lerkendal' => [
                 'url' => "http://129.241.161.227",
